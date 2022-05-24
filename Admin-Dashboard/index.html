@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="index2.html">GO to Product Page</a>
+  <title>Document</title>
+  <style>
+  *{
+    margin:10px; 
+   
+   
+  }
+  a {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+form#Product {
+    margin: 0px 4px 16px 499px;
+    background-color: aliceblue;
+    width: 25%;
+    padding-left: 130px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /* padding: 15px 3px 15px 87px; */
+}
+input#name {
+    padding: 10px;
+}
+input#price {
+    padding: 10px;
+}
+input#category {
+    padding: 10px;
+}
+select#gender {
+    padding: 10px;
+    width: 60%;
+}
+
+input#image {
+    padding: 10px;
+}
+input#add {
+    padding: 10px;
+    width: 60%;
+}
+
+  </style>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+  <form action="submitProduct(event)" id="Product">
+   Product Name <input
+    style="display:block;"
+    type="text"
+    id="name"
+    placeholder="Product Name"
+    >
+    <br>
+    <label for=""> Product Category</label>
+    <input
+    style="display:block;"
+     type="text"
+     name=""
+     id="category"
+      placeholder="Enter Category">
+    <br>
+    <label for="">Imageurl</label>
+    <input
+    style="display:block;"
+    type="text"
+     id="image"
+     placeholder="Imageurl">
+    <br>
+    <label for="">Price</label>
+    <input
+    style="display:block;"
+     type="number"
+    id="price"
+     placeholder="Enter Price">
+
+    <br>
+    <label for="">Gender</label>
+    <select style="display:block;" name="gender" id="gender">
+        <option value="">Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <br/>
+    <label for="sold">Sold:</label>
+    <input type="radio" value="Yes" id="sold">
+      
+
+      <br/> <br/>
+    <input style="display: block;" type="submit" id="add">
+  </form>
+</body>
+</html>
+
+<script>
+
+
+// function Student(n,c,u,i,b){
+//   this.name=Name;
+//        this.category=Category;
+//        this.imageUrl=Image;
+//        this.price=Price;
+//        this.gender=Gender;
+//         this.sold=sold;
+  
+// }
+
+    // var length = data.length;
+//     function storeData(event){
+//     event.preventDefault(); 
+    
+// let form = document.getElementById("students_data");
+// let name = form.name.value
+// let course = form.course.value
+// let unit = form.unit.value
+// let image = form.image.value
+// let batch = form.batch.value
+// let s1= new Student(name, course,unit,image,batch)
+// let data = JSON.parse(localStorage.getItem("students")) || [];
+// data.push(s1);
+// localStorage.setItem("students", JSON.stringify(data))
+
+// console.log(s1);
+//     }
+
+var arr = JSON.parse(localStorage.getItem("Products"))|| []
+    document.querySelector("#add").addEventListener("click",Myproduct)
+    function Product(Name,Category,Image,Price,Gender,sold)
+    {
+        this.name=Name;
+        this.category=Category;
+        this.imageUrl=Image;
+        this.price=Price;
+        this.gender=Gender;
+        this.sold=sold;
+    }
+
+    function Myproduct(event){
+        event.preventDefault();
+      let form = document.getElementById("Product")
+      let Name=form.name.value;
+      let Category=form.category.value;
+      let Image=form.image.value;
+      let Price=form.price.value;
+      let Gender=form.gender.value;
+      let sold = form.sold.checked;
+      console.log(Product(Name,Category,Image,Price,Gender,sold))
+
+      let show = new Product(Name,Category,Image,Price,Gender,sold);
+      // console.log(show)
+        arr.push(show)
+        // console.log(show)
+        localStorage.setItem("Products",JSON.stringify(arr))
+        console.log(show)
+    }
+    
+    
+</script>
